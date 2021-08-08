@@ -14,6 +14,7 @@ Vue.use(Vuesax, {
 })
 
 Vue.use(VueAxios, axios)
+Vue.axios.defaults.baseURL = 'https://rickandmortyapi.com/api/'
 
 Vue.config.productionTip = false
 

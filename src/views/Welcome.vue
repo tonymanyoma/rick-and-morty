@@ -5,7 +5,7 @@
 
       <h1 class="title">Bienvenido a Rick and Morty</h1>
       <br>
-      <p class="text">En esta prueba, evaluaremos su capacidad par aconstruir la aplicación mediate el análisis de código y la reproducción del siguiente diseño.</p>
+      <p class="text">En esta prueba, evaluaremos su capacidad para construir la aplicación mediate el análisis de código y la reproducción del siguiente diseño.</p>
 
       <router-link to="/home"><input type="submit" class="btn-welcome" value="Continuar" /></router-link>
   </div>
