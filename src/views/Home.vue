@@ -11,12 +11,13 @@
 
       <div class="tabs">
         <vs-tabs alignment="fixed" color="#34c759" >
+          <!-- tab con todos los personajes -->
           <vs-tab label="All" class="label-tab" @click="changeTab('all')">
             <div>
               <br><br>
             <div class="col-2" style="display: flex">
                <span class="text-favorites">Mostrar Favoritos:</span>
-              <vs-icon icon="stars" class="icon-favorites" color="#b0b0b0" @click="showFavorites()" href="" />
+              <a  @click="showFavorites()"  href="#"><vs-icon icon="stars" class="icon-favorites"  :color="colorIconFavorites"/></a>
             <br><br>
             </div>
               <vs-row vs-justify="center" v-if="this.showClearFilter == true">
@@ -27,13 +28,43 @@
                     <input type="submit" class="btn-welcome" value="Eliminar filtros" @click="clearFilters()" />
                 </vs-col>
               </vs-row>
-                <vs-row vs-justify="center" v-if="this.showClearFilter == false">
+                <vs-row  v-if="this.showClearFilter == false && this.isFavorites == false">
                 <vs-col vs-w="4"  vs-type="flex" vs-justify="center" vs-align="center" v-for="character in Characters" v-bind:key="character.id" >
                   <vs-card class="characters-cards" >
                     <div slot="media">
                         <vs-col vs-w="3">
                           <img :src="character.image" class="image-characters">
-                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" :class="classFavorites"  /></a>
+                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
+                        </vs-col>
+                        <a @click="detailCharacter(character)"  style="color:black;">
+                            <div class="col-2" style="display: flex">
+                              <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
+                              <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
+                              <span class="text-character">{{character.status}}-{{character.species}}</span>
+                            </div>
+                          <div class="col-2">
+                            <h4 class="name-character">{{character.name}}</h4>
+                          </div><br><br>
+                          <div class="col-2">
+                            <span class="title-character">Last known location:</span>
+                          </div><br><br>
+                          <div class="col-2">
+                            <h4 class="name-character">{{character.location.name}}</h4>
+                          </div>
+                        </a>
+                      </div>
+                  </vs-card>
+                </vs-col>
+              </vs-row>
+
+              <!-- favoritos -->
+              <vs-row  v-if="this.showClearFilter == false && this.isFavorites == true">
+                <vs-col vs-w="4"  vs-type="flex" vs-justify="center" vs-align="center" v-for="character in Favorites" v-bind:key="character.id" >
+                  <vs-card class="characters-cards" >
+                    <div slot="media">
+                        <vs-col vs-w="3">
+                          <img :src="character.image" class="image-characters">
+                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
                         </vs-col>
                         <a @click="detailCharacter(character)" :href="modal" style="color:black;">
                             <div class="col-2" style="display: flex">
@@ -55,16 +86,15 @@
                   </vs-card>
                 </vs-col>
               </vs-row>
-
             </div>
           </vs-tab>
-
+        <!-- tan con personajes de genero desconocido-->
           <vs-tab label="Unknown" @click="changeTab('unknown')">
             <div>
               <br><br>
             <div class="col-2" style="display: flex">
                <span class="text-favorites">Mostrar Favoritos:</span>
-              <vs-icon icon="stars" class="icon-favorites" color="#b0b0b0"/>
+              <a  @click="showFavorites()"  href="#"><vs-icon icon="stars" class="icon-favorites" :color="colorIconFavorites"/></a>
             <br><br>
             </div>
               <vs-row vs-justify="center" v-if="this.showClearFilter == true">
@@ -74,13 +104,13 @@
                     <input type="submit" class="btn-welcome" value="Eliminar filtros" @click="clearFilters()" />
                 </vs-col>
               </vs-row>
-              <vs-row v-if="this.showClearFilter == false">
+              <vs-row v-if="this.showClearFilter == false && this.isFavorites == false">
                 <vs-col vs-w="4" vs-type="flex" vs-justify="center" vs-align="center" v-for="character in UnknownCharacters" v-bind:key="character.id" >
                   <vs-card class="characters-cards" >
                     <div slot="media">
                         <vs-col vs-w="3">
                           <img :src="character.image" class="image-characters">
-                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars"  class="icon-favorites-img" /></a>
+                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"   /></a>
                         </vs-col>
                             <div class="col-2" style="display: flex">
                               <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
@@ -100,14 +130,44 @@
                   </vs-card>
                 </vs-col>
               </vs-row>
+              <!-- favoritos -->
+              <vs-row  v-if="this.showClearFilter == false && this.isFavorites == true">
+                <vs-col vs-w="4"  vs-type="flex" vs-justify="center" vs-align="center" v-for="character in UnknownFavorites" v-bind:key="character.id" >
+                  <vs-card class="characters-cards" >
+                    <div slot="media">
+                        <vs-col vs-w="3">
+                          <img :src="character.image" class="image-characters">
+                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
+                        </vs-col>
+                        <a @click="detailCharacter(character)" :href="modal" style="color:black;">
+                            <div class="col-2" style="display: flex">
+                              <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
+                              <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
+                              <span class="text-character">{{character.status}}-{{character.species}}</span>
+                            </div>
+                          <div class="col-2">
+                            <h4 class="name-character">{{character.name}}</h4>
+                          </div><br><br>
+                          <div class="col-2">
+                            <span class="title-character">Last known location:</span>
+                          </div><br><br>
+                          <div class="col-2">
+                            <h4 class="name-character">{{character.location.name}}</h4>
+                          </div>
+                        </a>
+                      </div>
+                  </vs-card>
+                </vs-col>
+              </vs-row>
             </div>
           </vs-tab>
+          <!-- personajes genero femenino -->
           <vs-tab label="Female" @click="changeTab('female')">
             <div>
               <br><br>
             <div class="col-2" style="display: flex">
                <span class="text-favorites">Mostrar Favoritos:</span>
-              <vs-icon icon="stars" class="icon-favorites" color="#b0b0b0"/>
+              <a  @click="showFavorites()"  href="#"><vs-icon icon="stars" class="icon-favorites" :color="colorIconFavorites"/></a>
             <br><br>
             </div>
               <vs-row vs-justify="center" v-if="this.showClearFilter == true">
@@ -117,13 +177,13 @@
                     <input type="submit" class="btn-welcome" value="Eliminar filtros" @click="clearFilters()" />
                 </vs-col>
               </vs-row>
-                <vs-row v-if="this.showClearFilter == false">
+                <vs-row v-if="this.showClearFilter == false && this.isFavorites == false">
                 <vs-col vs-w="4" vs-type="flex" vs-justify="center" vs-align="center" v-for="character in FemaleCharacters" v-bind:key="character.id" >
                   <vs-card class="characters-cards" >
                     <div slot="media">
                         <vs-col vs-w="3">
                           <img :src="character.image" class="image-characters">
-                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars"  class="icon-favorites-img" /></a>
+                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"   /></a>
                         </vs-col>
                             <div class="col-2" style="display: flex">
                               <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
@@ -143,14 +203,44 @@
                   </vs-card>
                 </vs-col>
               </vs-row>
+              <!-- favoritos -->
+              <vs-row  v-if="this.showClearFilter == false && this.isFavorites == true">
+                <vs-col vs-w="4"  vs-type="flex" vs-justify="center" vs-align="center" v-for="character in FemaleFavorites" v-bind:key="character.id" >
+                  <vs-card class="characters-cards" >
+                    <div slot="media">
+                        <vs-col vs-w="3">
+                          <img :src="character.image" class="image-characters">
+                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
+                        </vs-col>
+                        <a @click="detailCharacter(character)" :href="modal" style="color:black;">
+                            <div class="col-2" style="display: flex">
+                              <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
+                              <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
+                              <span class="text-character">{{character.status}}-{{character.species}}</span>
+                            </div>
+                          <div class="col-2">
+                            <h4 class="name-character">{{character.name}}</h4>
+                          </div><br><br>
+                          <div class="col-2">
+                            <span class="title-character">Last known location:</span>
+                          </div><br><br>
+                          <div class="col-2">
+                            <h4 class="name-character">{{character.location.name}}</h4>
+                          </div>
+                        </a>
+                      </div>
+                  </vs-card>
+                </vs-col>
+              </vs-row>
             </div>
           </vs-tab>
+          <!-- personaje genero masculino -->
           <vs-tab label="Male" @click="changeTab('male')">
             <div>
               <br><br>
             <div class="col-2" style="display: flex">
                <span class="text-favorites">Mostrar Favoritos:</span>
-              <vs-icon icon="stars" class="icon-favorites" color="#b0b0b0"/>
+              <a  @click="showFavorites()"  href="#"><vs-icon icon="stars" class="icon-favorites" :color="colorIconFavorites"/></a>
             <br><br>
             </div>
               <vs-row vs-justify="center" v-if="this.showClearFilter == true">
@@ -160,13 +250,13 @@
                     <input type="submit" class="btn-welcome" value="Eliminar filtros" @click="clearFilters()" />
                 </vs-col>
               </vs-row>
-                <vs-row v-if="this.showClearFilter == false">
+                <vs-row v-if="this.showClearFilter == false && this.isFavorites == false">
                 <vs-col vs-w="4" vs-type="flex" vs-justify="center" vs-align="center" v-for="character in MaleCharacters" v-bind:key="character.id" >
                   <vs-card class="characters-cards" >
                     <div slot="media">
                         <vs-col vs-w="3">
                           <img :src="character.image" class="image-characters">
-                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" /></a>
+                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"   /></a>
                         </vs-col>
                         <div class="col-2" style="display: flex">
                           <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
@@ -186,14 +276,44 @@
                   </vs-card>
                 </vs-col>
               </vs-row>
+              <!-- favoritos -->
+              <vs-row  v-if="this.showClearFilter == false && this.isFavorites == true">
+                <vs-col vs-w="4"  vs-type="flex" vs-justify="center" vs-align="center" v-for="character in MaleFavorites" v-bind:key="character.id" >
+                  <vs-card class="characters-cards" >
+                    <div slot="media">
+                        <vs-col vs-w="3">
+                          <img :src="character.image" class="image-characters">
+                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
+                        </vs-col>
+                        <a @click="detailCharacter(character)" :href="modal" style="color:black;">
+                            <div class="col-2" style="display: flex">
+                              <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
+                              <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
+                              <span class="text-character">{{character.status}}-{{character.species}}</span>
+                            </div>
+                          <div class="col-2">
+                            <h4 class="name-character">{{character.name}}</h4>
+                          </div><br><br>
+                          <div class="col-2">
+                            <span class="title-character">Last known location:</span>
+                          </div><br><br>
+                          <div class="col-2">
+                            <h4 class="name-character">{{character.location.name}}</h4>
+                          </div>
+                        </a>
+                      </div>
+                  </vs-card>
+                </vs-col>
+              </vs-row>
             </div>
           </vs-tab>
+          <!-- personajes sin genero -->
           <vs-tab label="Genderless" @click="changeTab('genderless')">
             <div>
               <br><br>
             <div class="col-2" style="display: flex">
                <span class="text-favorites">Mostrar Favoritos:</span>
-              <vs-icon icon="stars" class="icon-favorites" color="#b0b0b0"/>
+              <a  @click="showFavorites()"  href="#"><vs-icon icon="stars" class="icon-favorites" :color="colorIconFavorites"/></a>
             <br><br>
             </div>
               <vs-row vs-justify="center" v-if="this.showClearFilter == true">
@@ -203,13 +323,13 @@
                     <input type="submit" class="btn-welcome" value="Eliminar filtros" @click="clearFilters()" />
                 </vs-col>
               </vs-row>
-                <vs-row v-if="this.showClearFilter == false">
+                <vs-row v-if="this.showClearFilter == false && this.isFavorites == false">
                 <vs-col vs-w="4" vs-type="flex" vs-justify="center" vs-align="center" v-for="character in GenderlessCharacters" v-bind:key="character.id" >
                   <vs-card class="characters-cards" >
                     <div slot="media">
                         <vs-col vs-w="3">
                           <img :src="character.image" class="image-characters">
-                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" /></a>
+                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"   /></a>
                         </vs-col>
                         <div class="col-2" style="display: flex">
                           <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
@@ -225,6 +345,35 @@
                       <div class="col-2">
                         <h4 class="name-character">{{character.location.name}}</h4>
                       </div>
+                      </div>
+                  </vs-card>
+                </vs-col>
+              </vs-row>
+              <!-- favoritos -->
+              <vs-row  v-if="this.showClearFilter == false && this.isFavorites == true">
+                <vs-col vs-w="4"  vs-type="flex" vs-justify="center" vs-align="center" v-for="character in GenderlessFavorites" v-bind:key="character.id" >
+                  <vs-card class="characters-cards" >
+                    <div slot="media">
+                        <vs-col vs-w="3">
+                          <img :src="character.image" class="image-characters">
+                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
+                        </vs-col>
+                        <a @click="detailCharacter(character)" :href="modal"  style="color:black;">
+                            <div class="col-2" style="display: flex">
+                              <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
+                              <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
+                              <span class="text-character">{{character.status}}-{{character.species}}</span>
+                            </div>
+                          <div class="col-2">
+                            <h4 class="name-character">{{character.name}}</h4>
+                          </div><br><br>
+                          <div class="col-2">
+                            <span class="title-character">Last known location:</span>
+                          </div><br><br>
+                          <div class="col-2">
+                            <h4 class="name-character">{{character.location.name}}</h4>
+                          </div>
+                        </a>
                       </div>
                   </vs-card>
                 </vs-col>
@@ -398,6 +547,10 @@ export default {
       UnknownCharacters: [],
       GenderlessCharacters: [],
       Favorites: [],
+      MaleFavorites: [],
+      FemaleFavorites: [],
+      UnknownFavorites: [],
+      GenderlessFavorites: [],
       textSearch: '',
       popupDetailCharacter: false,
       fillChararter: {},
@@ -409,7 +562,10 @@ export default {
       classFavorites: 'icon-favorites-img',
       switchTab: 'all',
       Url: '',
-      showClearFilter: false
+      showClearFilter: false,
+      idCharacter: '',
+      colorIconFavorites: '#b0b0b0',
+      isFavorites: false
 
     }
   },
@@ -419,6 +575,8 @@ export default {
   methods: {
     changeTab (data) {
       this.switchTab = data
+      this.isFavorites = false
+      this.colorIconFavorites = '#b0b0b0'
     },
     // metodo para limpiar filtro
     clearFilters () {
@@ -446,15 +604,28 @@ export default {
     getCharacters (page) {
       this.loadingOpen()
       this.axios({
-        url: 'character?page=' + page,
+        url: 'character',
         method: 'GET',
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Headers': '*'
         }
       }).then((result) => {
-        this.Characters = result.data.results
+        var characters = result.data.results
+        this.Characters = characters.map(function (data) {
+          data.active = false
+          return data
+        })
         this.loadingClose()
+      }).catch(error => {
+        if (error) {
+          this.loadingClose()
+          this.$vs.notify({
+            text: error.response.data.error,
+            color: 'danger',
+            icon: 'warning'
+          })
+        }
       })
     },
     // filtrar personajes por su nombre
@@ -530,6 +701,15 @@ export default {
         }
       }).then((result) => {
         this.MaleCharacters = result.data.results
+      }).catch(error => {
+        if (error) {
+          this.loadingClose()
+          this.$vs.notify({
+            text: error.response.data.error,
+            color: 'danger',
+            icon: 'warning'
+          })
+        }
       })
     },
     // obtener todos los personajes mujer
@@ -542,6 +722,15 @@ export default {
         }
       }).then((result) => {
         this.FemaleCharacters = result.data.results
+      }).catch(error => {
+        if (error) {
+          this.loadingClose()
+          this.$vs.notify({
+            text: error.response.data.error,
+            color: 'danger',
+            icon: 'warning'
+          })
+        }
       })
     },
     // obtener todos los personajes de genero desconocido
@@ -554,6 +743,15 @@ export default {
         }
       }).then((result) => {
         this.UnknownCharacters = result.data.results
+      }).catch(error => {
+        if (error) {
+          this.loadingClose()
+          this.$vs.notify({
+            text: error.response.data.error,
+            color: 'danger',
+            icon: 'warning'
+          })
+        }
       })
     },
     // obtener todos los personajes de genero desconocido
@@ -566,23 +764,98 @@ export default {
         }
       }).then((result) => {
         this.GenderlessCharacters = result.data.results
+      }).catch(error => {
+        if (error) {
+          this.loadingClose()
+          this.$vs.notify({
+            text: error.response.data.error,
+            color: 'danger',
+            icon: 'warning'
+          })
+        }
       })
     },
     // añadir personaje a favoritos
     addFavorites (character) {
-      this.classFavorites = 'icon-favorites-update'
-      this.Favorites.push(character)
-      this.colorIconFavorites = '#F6C962'
-      this.$vs.notify({
-        text: 'Personaje añadido a favoritos',
-        color: 'success',
-        position: 'top-center',
-        icon: 'done'
-      })
+      this.idCharacter = character.id
+      var favorite
+
+      switch (this.switchTab) {
+        case 'all':
+          favorite = this.Characters.find(item => item.id === character.id)
+          if (favorite.active === true) {
+            favorite.active = false
+            const index = this.Favorites.indexOf(character)
+            this.Favorites.splice(index, 1)
+            this.deleteCharacterFavorite()
+          } else {
+            favorite.active = true
+            this.Favorites.push(character)
+            this.addCharacterFavorite()
+          }
+          break
+        case 'unknown':
+          favorite = this.UnknownCharacters.find(item => item.id === character.id)
+          if (favorite.active === true) {
+            favorite.active = false
+            const index = this.UnknownFavorites.indexOf(character)
+            this.UnknownFavorites.splice(index, 1)
+            this.deleteCharacterFavorite()
+          } else {
+            favorite.active = true
+            this.UnknownFavorites.push(character)
+            this.addCharacterFavorite()
+          }
+          break
+        case 'female':
+          favorite = this.FemaleCharacters.find(item => item.id === character.id)
+          if (favorite.active === true) {
+            favorite.active = false
+            const index = this.FemaleCharacters.indexOf(character)
+            this.FemaleCharacters.splice(index, 1)
+            this.deleteCharacterFavorite()
+          } else {
+            favorite.active = true
+            this.FemaleCharacters.push(character)
+            this.addCharacterFavorite()
+          }
+          break
+        case 'male':
+          favorite = this.MaleCharacters.find(item => item.id === character.id)
+          if (favorite.active === true) {
+            favorite.active = false
+            const index = this.MaleCharacters.indexOf(character)
+            this.MaleCharacters.splice(index, 1)
+            this.deleteCharacterFavorite()
+          } else {
+            favorite.active = true
+            this.MaleCharacters.push(character)
+            this.addCharacterFavorite()
+          }
+          break
+        case 'genderless':
+          favorite = this.GenderlessCharacters.find(item => item.id === character.id)
+          if (favorite.active === true) {
+            favorite.active = false
+            const index = this.MaleCharacters.indexOf(character)
+            this.MaleCharacters.splice(index, 1)
+            this.deleteCharacterFavorite()
+          } else {
+            favorite.active = true
+            this.GenderlessCharacters.push(character)
+            this.addCharacterFavorite()
+          }
+          break
+      }
     },
     showFavorites () {
-      this.Characters = []
-      this.Characters = this.Favorites
+      if (this.isFavorites === true) {
+        this.isFavorites = false
+        this.colorIconFavorites = '#b0b0b0'
+      } else {
+        this.isFavorites = true
+        this.colorIconFavorites = '#F7DE5D'
+      }
     },
 
     interestingCharacters () {
@@ -604,40 +877,49 @@ export default {
         this.InterestingCharacters = result.data
       })
     },
+
     detailCharacter (chararter) {
-      this.modal = '#openModal-about'
-      this.fillChararter.image = chararter.image
-      this.fillChararter.name = chararter.name
-      this.fillChararter.status = chararter.status
-      this.fillChararter.species = chararter.species
-      this.fillChararter.gender = chararter.gender
+      const redirectTo = 'Detailcharacter'
+      this.$router.push({
+        name: redirectTo,
+        params: {
+          id: '1'
 
-      // formatear origen
-      var formatOrigin = chararter.origin.name.split(' ')
-      this.fillChararter.origin = formatOrigin[0]
-      this.fillChararter.type = chararter.type
-
-      // obtener id de los episodios
-      var arrayEpisodes = chararter.episode
-      var format
-
-      for (var i = 0; i < arrayEpisodes.length; i++) {
-        format = arrayEpisodes[i].split('episode/')
-        this.Episodesid.push(format[1])
-      }
-
-      this.axios({
-        url: 'episode/' + this.Episodesid,
-        method: 'GET',
-        headers: {
-          'Access-Control-Allow-Origin': '*'
         }
-      }).then((result) => {
-        this.Episodes = result.data
-        this.isArray = Array.isArray(this.Episodes)
       })
+      // this.modal = '#openModal-about'
+      // this.fillChararter.image = chararter.image
+      // this.fillChararter.name = chararter.name
+      // this.fillChararter.status = chararter.status
+      // this.fillChararter.species = chararter.species
+      // this.fillChararter.gender = chararter.gender
 
-      this.interestingCharacters()
+      // // formatear origen
+      // var formatOrigin = chararter.origin.name.split(' ')
+      // this.fillChararter.origin = formatOrigin[0]
+      // this.fillChararter.type = chararter.type
+
+      // // obtener id de los episodios
+      // var arrayEpisodes = chararter.episode
+      // var format
+
+      // for (var i = 0; i < arrayEpisodes.length; i++) {
+      //   format = arrayEpisodes[i].split('episode/')
+      //   this.Episodesid.push(format[1])
+      // }
+
+      // this.axios({
+      //   url: 'episode/' + this.Episodesid,
+      //   method: 'GET',
+      //   headers: {
+      //     'Access-Control-Allow-Origin': '*'
+      //   }
+      // }).then((result) => {
+      //   this.Episodes = result.data
+      //   this.isArray = Array.isArray(this.Episodes)
+      // })
+
+      // this.interestingCharacters()
     },
     closeModal () {
       this.modal = ''
@@ -813,7 +1095,7 @@ input#search-bar{
   color: #fff;
 }
 
-.icon-favorites-update {
+.active {
     position: absolute;
     margin-top: -40px;
     font-size: 40px;
