@@ -1,5 +1,6 @@
 ## Aplicación rick y morty
-> Aplicación construida en vue js utilizando el api de rick y morty https://rickandmortyapi.com/
+![alt text](https://rickandmortyapi.com/https://github.com/tonymanyoma/rick-and-morty/tree/master/src/assets/images/fondo.jpg)
+> Aplicación construida en vue js utilizando el api de rick y morty 
 
 # Descripción de la app
 > Esta app permite listar los personajes de rick y morty por su genero, además de la posibilidad de filtrarlos por nombre utilizando el api
