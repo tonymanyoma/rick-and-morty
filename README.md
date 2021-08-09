@@ -1,38 +1,20 @@
-# Aplicación vue js con uso del api rick y morty
-https://rickandmortyapi.com/
+## Aplicación rick y morty
+> Aplicación construida en vue js utilizando el api de rick y morty https://rickandmortyapi.com/
 
-## Node js version 
->10.18
+# Descripción de la app
+> Esta app permite listar los personajes de rick y morty por su genero, además de la posibilidad de filtrarlos por nombre utilizando el api
+> También permite a través de un modal ver alñ detalle el personaje junto con los capítulos en donde aparece y permite compartir la url de dicho personaje
 
-## Project setup
-```
-npm install
-```
+# Node js version 
+> 10.18
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+# Componentes adicionales
+> Se implementó vuesax 3.0 https://lusaxweb.github.io/vuesax/development/ y vue js modal https://euvl.github.io/vue-js-modal/
 
-### Compiles and minifies for production
-```
-npm run build
-```
+# Ejecución
+1. Clonar repositorio
+2. Ejecutar npm install
+3. Ejecutar npm run serve
 
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# Pruebas unitarias
+1. Ejecutar npm run test:unit

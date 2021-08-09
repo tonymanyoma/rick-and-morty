@@ -391,7 +391,7 @@
         </vs-tabs>
       </div>
 
-   <modal name="detail" width="1200" height="auto" scrollable="true"  @closed="closeModal()">
+   <modal name="detail" width="1200" height="auto" :scrollable="true"  @closed="closeModal()">
      <div>
      <div id="container">
             <div id="hero-img"></div>
@@ -548,7 +548,6 @@ export default {
       modal: '',
       Episodesid: [],
       Episodes: [],
-      isArray: false,
       InterestingCharacters: [],
       classFavorites: 'icon-favorites-img',
       switchTab: 'all',
@@ -881,6 +880,15 @@ export default {
         }
       }).then((result) => {
         this.InterestingCharacters = result.data
+      }).catch(error => {
+        if (error) {
+          this.loadingClose()
+          this.$vs.notify({
+            text: error.response.data.error,
+            color: 'danger',
+            icon: 'warning'
+          })
+        }
       })
     },
 
@@ -902,6 +910,15 @@ export default {
       }).then((result) => {
         this.Episodes = result.data
         this.isArray = Array.isArray(this.Episodes)
+      }).catch(error => {
+        if (error) {
+          this.loadingClose()
+          this.$vs.notify({
+            text: error.response.data.error,
+            color: 'danger',
+            icon: 'warning'
+          })
+        }
       })
     },
 
@@ -928,6 +945,15 @@ export default {
         this.fillCharacter.type = result.data.type
         this.arrayEpisodes = result.data.episode
         this.getEpisodes()
+      }).catch(error => {
+        if (error) {
+          this.loadingClose()
+          this.$vs.notify({
+            text: error.response.data.error,
+            color: 'danger',
+            icon: 'warning'
+          })
+        }
       })
 
       this.interestingCharacters()
