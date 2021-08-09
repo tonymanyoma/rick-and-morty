@@ -556,7 +556,8 @@ export default {
       idCharacter: '',
       colorIconFavorites: '#b0b0b0',
       isFavorites: false,
-      arrayEpisodes: []
+      arrayEpisodes: [],
+      test: ''
 
     }
   },
