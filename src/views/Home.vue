@@ -36,7 +36,7 @@
                           <img :src="character.image" class="image-characters">
                           <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
                         </vs-col>
-                        <a @click="detailCharacter(character)"  style="color:black;">
+                        <a @click="openModal(character.id)"  style="color:black;">
                             <div class="col-2" style="display: flex">
                               <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                               <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -66,7 +66,7 @@
                           <img :src="character.image" class="image-characters">
                           <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
                         </vs-col>
-                        <a @click="detailCharacter(character)" :href="modal" style="color:black;">
+                        <a @click="openModal(character.id)" style="color:black;">
                             <div class="col-2" style="display: flex">
                               <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                               <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -112,6 +112,7 @@
                           <img :src="character.image" class="image-characters">
                           <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"   /></a>
                         </vs-col>
+                        <a @click="openModal(character.id)" style="color:black;">
                             <div class="col-2" style="display: flex">
                               <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                               <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -126,6 +127,7 @@
                           <div class="col-2">
                             <h4 class="name-character">{{character.location.name}}</h4>
                           </div>
+                        </a>
                       </div>
                   </vs-card>
                 </vs-col>
@@ -139,7 +141,7 @@
                           <img :src="character.image" class="image-characters">
                           <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
                         </vs-col>
-                        <a @click="detailCharacter(character)" :href="modal" style="color:black;">
+                        <a @click="openModal(character.id)" style="color:black;">
                             <div class="col-2" style="display: flex">
                               <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                               <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -185,6 +187,7 @@
                           <img :src="character.image" class="image-characters">
                           <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"   /></a>
                         </vs-col>
+                        <a @click="openModal(character.id)" style="color:black;">
                             <div class="col-2" style="display: flex">
                               <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                               <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -199,6 +202,7 @@
                           <div class="col-2">
                             <h4 class="name-character">{{character.location.name}}</h4>
                           </div>
+                        </a>
                       </div>
                   </vs-card>
                 </vs-col>
@@ -212,7 +216,7 @@
                           <img :src="character.image" class="image-characters">
                           <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
                         </vs-col>
-                        <a @click="detailCharacter(character)" :href="modal" style="color:black;">
+                        <a @click="openModal(character.id)" style="color:black;">
                             <div class="col-2" style="display: flex">
                               <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                               <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -258,6 +262,7 @@
                           <img :src="character.image" class="image-characters">
                           <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"   /></a>
                         </vs-col>
+                        <a @click="openModal(character.id)" style="color:black;">
                         <div class="col-2" style="display: flex">
                           <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                           <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -272,6 +277,7 @@
                       <div class="col-2">
                         <h4 class="name-character">{{character.location.name}}</h4>
                       </div>
+                        </a>
                       </div>
                   </vs-card>
                 </vs-col>
@@ -285,7 +291,7 @@
                           <img :src="character.image" class="image-characters">
                           <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
                         </vs-col>
-                        <a @click="detailCharacter(character)" :href="modal" style="color:black;">
+                        <a @click="openModal(character.id)" style="color:black;">
                             <div class="col-2" style="display: flex">
                               <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                               <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -331,6 +337,7 @@
                           <img :src="character.image" class="image-characters">
                           <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"   /></a>
                         </vs-col>
+                        <a @click="openModal(character.id)" style="color:black;">
                         <div class="col-2" style="display: flex">
                           <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                           <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -345,6 +352,7 @@
                       <div class="col-2">
                         <h4 class="name-character">{{character.location.name}}</h4>
                       </div>
+                        </a>
                       </div>
                   </vs-card>
                 </vs-col>
@@ -358,7 +366,7 @@
                           <img :src="character.image" class="image-characters">
                           <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
                         </vs-col>
-                        <a @click="detailCharacter(character)" :href="modal"  style="color:black;">
+                        <a @click="openModal(character.id)" style="color:black;">
                             <div class="col-2" style="display: flex">
                               <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                               <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -389,12 +397,12 @@
          <div id="container">
             <div id="hero-img"></div>
             <div id="profile-img">
-              <img id="img-profile" :src="fillChararter.image" alt="" />
+              <img id="img-profile" :src="fillCharacter.image" alt="" />
             </div>
             <div id="content"><br>
-              <span>{{fillChararter.status}}</span><br>
-              <h3>{{fillChararter.name}}</h3><br>
-              <span>{{fillChararter.species}}</span>
+              <span>{{fillCharacter.status}}</span><br>
+              <h3>{{fillCharacter.name}}</h3><br>
+              <span>{{fillCharacter.species}}</span>
 
             </div>
             <div>
@@ -412,7 +420,7 @@
                       <span class="text-icon-modal">Gender:</span>
                     </div>
                     <div class="content1">
-                      <span class="text-modal">{{fillChararter.gender}}</span>
+                      <span class="text-modal">{{fillCharacter.gender}}</span>
                     </div>
                   </div>
                 </vs-col>
@@ -423,7 +431,7 @@
                       <span class="text-icon-modal">Origin:</span>
                     </div>
                     <div class="content1">
-                      <span class="text-modal">{{fillChararter.origin}}</span>
+                      <span class="text-modal">{{fillCharacter.origin}}</span>
                     </div>
                   </div>
                 </vs-col>
@@ -434,7 +442,7 @@
                       <span class="text-icon-modal">Type:</span>
                     </div>
                     <div class="content1">
-                      <span class="text-modal">{{fillChararter.type}}</span>
+                      <span class="text-modal">{{fillCharacter.type}}</span>
                     </div>
                   </div>
                 </vs-col>
@@ -515,12 +523,150 @@
               </vs-row>
               <br>
               <vs-row>
-                <input type="submit" class="btn-personaje" value="Compartir personaje" @click="clearFilters()" />
+                <input type="submit" class="btn-personaje" value="Compartir personaje" @click="copyUrl(fillCharacter.id)" />
               </vs-row>
             </div>
           </div>
        </div>
    </div>
+
+   <modal name="detail" width="1200" height="1500" style="overflow-y: auto;" @closed="closeModal()">
+     <div>
+     <div id="container" >
+            <div id="hero-img"></div>
+            <div id="profile-img">
+              <img id="img-profile" :src="fillCharacter.image" alt="" />
+            </div>
+            <div id="content"><br>
+              <span>{{fillCharacter.status}}</span><br>
+              <h3>{{fillCharacter.name}}</h3><br>
+              <span>{{fillCharacter.species}}</span>
+
+            </div>
+            <div>
+              <vs-row  vs-w="12">
+                <vs-col vs-w="2">
+                  <h3>Información</h3>
+                </vs-col>
+              </vs-row>
+               <br>
+              <vs-row  vs-w="12" class="row-modal">
+                <vs-col vs-w="4">
+                  <div class="square">
+                    <div class="content1">
+                      <vs-icon icon="info" class="icon-characters-cards" color="#b0b0b0"/>
+                      <span class="text-icon-modal">Gender:</span>
+                    </div>
+                    <div class="content1">
+                      <span class="text-modal">{{fillCharacter.gender}}</span>
+                    </div>
+                  </div>
+                </vs-col>
+                <vs-col vs-w="4">
+                  <div class="square">
+                    <div class="content1">
+                      <vs-icon icon="info" class="icon-characters-cards" color="#b0b0b0"/>
+                      <span class="text-icon-modal">Origin:</span>
+                    </div>
+                    <div class="content1">
+                      <span class="text-modal">{{fillCharacter.origin}}</span>
+                    </div>
+                  </div>
+                </vs-col>
+                <vs-col vs-w="4">
+                  <div class="square">
+                    <div class="content1">
+                      <vs-icon icon="info" class="icon-characters-cards" color="#b0b0b0"/>
+                      <span class="text-icon-modal">Type:</span>
+                    </div>
+                    <div class="content1">
+                      <span class="text-modal">{{fillCharacter.type}}</span>
+                    </div>
+                  </div>
+                </vs-col>
+              </vs-row>
+              <br>
+              <vs-divider/>
+              <br>
+              <vs-row  vs-w="12">
+                <vs-col vs-w="2">
+                  <h3>Episodios</h3>
+                </vs-col>
+              </vs-row>
+               <br>
+                <vs-row  vs-w="12" v-if="this.isArray == false" class="row-modal">
+                <vs-col vs-w="3">
+                  <div class="square">
+                    <div class="content1">
+                      <span class="text-icon-modal">{{Episodes.name}}</span>
+                    </div>
+                    <div class="content1">
+                      <span class="text-modal-episode">{{Episodes.episode}}</span>
+                    </div>
+                    <div class="content1">
+                      <span class="text-modal-date">{{Episodes.air_date}}</span>
+                    </div>
+                  </div>
+                </vs-col>
+              </vs-row>
+               <vs-row  vs-w="12" v-else class="row-modal">
+                <vs-col vs-w="3" v-for="episode in Episodes" v-bind:key="episode.id" >
+                  <div class="square">
+                    <div class="content1">
+                      <span class="text-icon-modal">{{episode.name}}</span>
+                    </div>
+                    <div class="content1">
+                      <span class="text-modal-episode">{{episode.episode}}</span>
+                    </div>
+                    <div class="content1">
+                      <span class="text-modal-date">{{episode.air_date}}</span>
+                    </div>
+                  </div>
+                </vs-col>
+              </vs-row>
+              <br>
+              <vs-divider/>
+              <br>
+              <vs-row  vs-w="12">
+                <vs-col vs-w="4">
+                  <h3 class="title-interesting-character">Personajes interesantes</h3>
+                </vs-col>
+              </vs-row>
+              <br>
+              <vs-row vs-justify="center">
+                <vs-col vs-w="6" vs-type="flex" vs-justify="center" vs-align="center" v-for="character in InterestingCharacters" v-bind:key="character.id" >
+                  <vs-card class="characters-cards-modal" >
+                    <div slot="media">
+                        <vs-col vs-w="3">
+                          <img :src="character.image">
+                            <vs-icon icon="stars" class="icon-favorites-img" />
+                        </vs-col>
+                        <div class="col-2" style="display: flex">
+                          <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
+                          <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
+                          <span class="text-character">{{character.status}}-{{character.species}}</span>
+                        </div>
+                      <div class="col-2">
+                        <h4 class="name-character">{{character.name}}</h4>
+                      </div><br><br>
+                      <div class="col-2">
+                        <span class="title-character">Last known location:</span>
+                      </div><br><br>
+                      <div class="col-2">
+                        <h4 class="name-character-modal">{{character.location.name}}</h4>
+                      </div>
+                      </div>
+                  </vs-card>
+                </vs-col>
+              </vs-row>
+              <br>
+              <vs-row>
+                <input type="submit" class="btn-personaje" value="Compartir personaje" @click="copyUrl(fillCharacter.id)" />
+              </vs-row>
+            </div>
+          </div>
+     </div>
+   </modal>
 
 <div class="img-background-footer"></div>
 
@@ -553,7 +699,7 @@ export default {
       GenderlessFavorites: [],
       textSearch: '',
       popupDetailCharacter: false,
-      fillChararter: {},
+      fillCharacter: { },
       modal: '',
       Episodesid: [],
       Episodes: [],
@@ -565,14 +711,29 @@ export default {
       showClearFilter: false,
       idCharacter: '',
       colorIconFavorites: '#b0b0b0',
-      isFavorites: false
+      isFavorites: false,
+      arrayEpisodes: []
 
     }
   },
 
   mixins: [misMixins],
 
+  mounted () {
+    var Urlactual = window.location
+    var formatUrl = Urlactual.href.split('home/')
+    if (formatUrl[1] > 0) {
+      this.$modal.show('detail')
+      this.detailCharacter(formatUrl[1])
+    }
+  },
+
   methods: {
+    openModal (idCharacter) {
+      this.detailCharacter(idCharacter).then((response) => {
+        this.$modal.show('detail')
+      })
+    },
     changeTab (data) {
       this.switchTab = data
       this.isFavorites = false
@@ -878,55 +1039,69 @@ export default {
       })
     },
 
-    detailCharacter (chararter) {
-      const redirectTo = 'Detailcharacter'
-      this.$router.push({
-        name: redirectTo,
-        params: {
-          id: '1'
+    getEpisodes () {
+      // obtener id de los episodios
+      var format
 
+      for (var i = 0; i < this.arrayEpisodes.length; i++) {
+        format = this.arrayEpisodes[i].split('episode/')
+        this.Episodesid.push(format[1])
+      }
+      console.log(this.Episodesid)
+      this.axios({
+        url: 'episode/' + this.Episodesid,
+        method: 'GET',
+        headers: {
+          'Access-Control-Allow-Origin': '*'
         }
+      }).then((result) => {
+        this.Episodes = result.data
+        this.isArray = Array.isArray(this.Episodes)
       })
+    },
+
+    async  detailCharacter (idCharacter) {
       // this.modal = '#openModal-about'
-      // this.fillChararter.image = chararter.image
-      // this.fillChararter.name = chararter.name
-      // this.fillChararter.status = chararter.status
-      // this.fillChararter.species = chararter.species
-      // this.fillChararter.gender = chararter.gender
 
-      // // formatear origen
-      // var formatOrigin = chararter.origin.name.split(' ')
-      // this.fillChararter.origin = formatOrigin[0]
-      // this.fillChararter.type = chararter.type
+      this.axios({
+        url: 'character/' + idCharacter,
+        method: 'GET',
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
+      }).then((result) => {
+        this.fillCharacter.id = result.data.id
+        this.fillCharacter.image = result.data.image
+        this.fillCharacter.name = result.data.name
+        this.fillCharacter.status = result.data.status
+        this.fillCharacter.species = result.data.species
+        this.fillCharacter.gender = result.data.gender
 
-      // // obtener id de los episodios
-      // var arrayEpisodes = chararter.episode
-      // var format
+        // formatear origen
+        var formatOrigin = result.data.origin.name.split(' ')
+        this.fillCharacter.origin = formatOrigin[0]
+        this.fillCharacter.type = result.data.type
+        this.arrayEpisodes = result.data.episode
+        this.getEpisodes()
+      })
 
-      // for (var i = 0; i < arrayEpisodes.length; i++) {
-      //   format = arrayEpisodes[i].split('episode/')
-      //   this.Episodesid.push(format[1])
-      // }
-
-      // this.axios({
-      //   url: 'episode/' + this.Episodesid,
-      //   method: 'GET',
-      //   headers: {
-      //     'Access-Control-Allow-Origin': '*'
-      //   }
-      // }).then((result) => {
-      //   this.Episodes = result.data
-      //   this.isArray = Array.isArray(this.Episodes)
-      // })
-
-      // this.interestingCharacters()
+      this.interestingCharacters()
     },
     closeModal () {
       this.modal = ''
-      this.fillChararter = {}
+      this.fillCharacter = {}
       this.Episodesid = []
       this.Episodes = []
       this.isArray = false
+    },
+    copyUrl (idcharacter) {
+      var aux = document.createElement('input')
+      aux.setAttribute('value', window.location.href.split('/0')[0] + '/' + idcharacter)
+      document.body.appendChild(aux)
+      aux.select()
+      document.execCommand('copy')
+      document.body.removeChild(aux)
+      this.copiedCharacter()
     }
   }
 }
@@ -1127,7 +1302,7 @@ input#search-bar{
 #container {
 width: 100%;
 height: 100%;
-margin: 30px auto 0 auto;
+
 background: #FFF;
 border-radius: 10px;
 box-shadow: 0 0 30px rgba(0,0,0,.3);
@@ -1312,5 +1487,13 @@ margin: 20px 0 0 0;
 }
 .title-interesting-character{
   margin-right: 100px;
+}
+
+.modal-vue{
+    /* top: 335px; */
+    margin-left: auto;
+    margin-right: auto;
+    width: 1200px;
+    height: 1200px;
 }
 </style>

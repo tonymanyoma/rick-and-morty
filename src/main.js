@@ -5,7 +5,7 @@ import store from './store'
 import Vuesax from 'vuesax'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-
+import vmodal from 'vue-js-modal'
 import 'vuesax/dist/vuesax.css'
 import 'material-icons/iconfont/material-icons.css'
 
@@ -15,6 +15,8 @@ Vue.use(Vuesax, {
 
 Vue.use(VueAxios, axios)
 Vue.axios.defaults.baseURL = 'https://rickandmortyapi.com/api/'
+
+Vue.use(vmodal)
 
 Vue.config.productionTip = false
 

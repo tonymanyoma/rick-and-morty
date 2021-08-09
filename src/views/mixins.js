@@ -34,6 +34,15 @@ export const misMixins = {
         position: 'top-center',
         icon: 'done'
       })
+    },
+
+    copiedCharacter () {
+      this.$vs.notify({
+        text: 'Url añadida al porta papeles',
+        color: 'success',
+        position: 'top-center',
+        icon: 'done'
+      })
     }
 
   }
