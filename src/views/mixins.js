@@ -16,6 +16,33 @@ export const misMixins = {
 
     loadingClose () {
       this.$vs.loading.close()
+    },
+
+    addCharacterFavorite () {
+      this.$vs.notify({
+        text: 'Personaje añadido a favoritos',
+        color: 'success',
+        position: 'top-center',
+        icon: 'done'
+      })
+    },
+
+    deleteCharacterFavorite () {
+      this.$vs.notify({
+        text: 'Personaje retirado den favoritos',
+        color: 'warning',
+        position: 'top-center',
+        icon: 'done'
+      })
+    },
+
+    copiedCharacter () {
+      this.$vs.notify({
+        text: 'Url añadida al porta papeles',
+        color: 'success',
+        position: 'top-center',
+        icon: 'done'
+      })
     }
 
   }
