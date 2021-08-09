@@ -1,5 +1,5 @@
 ## Aplicación rick y morty
-![alt text](https://github.com/tonymanyoma/rick-and-morty/tree/master/src/assets/images/fondo.jpg)
+(https://github.com/tonymanyoma/rick-and-morty/tree/master/src/assets/images/fondo.jpg)
 > Aplicación construida en vue js utilizando el api de rick y morty 
 
 # Descripción de la app
