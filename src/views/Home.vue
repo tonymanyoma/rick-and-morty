@@ -17,7 +17,7 @@
               <br><br>
             <div class="col-2" style="display: flex">
                <span class="text-favorites">Mostrar Favoritos:</span>
-              <a  @click="showFavorites()"  href="#"><vs-icon icon="stars" class="icon-favorites"  :color="colorIconFavorites"/></a>
+              <a  @click="showFavorites()"  href="#/home/0"><vs-icon icon="stars" class="icon-favorites"  :color="colorIconFavorites"/></a>
             <br><br>
             </div>
               <vs-row vs-justify="center" v-if="this.showClearFilter == true">
@@ -36,7 +36,7 @@
                           <img :src="character.image" class="image-characters">
                           <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
                         </vs-col>
-                        <a @click="openModal(character.id)"  style="color:black;">
+                        <a @click="openModal(character.id)" href="#/home/0" style="color:black;">
                             <div class="col-2" style="display: flex">
                               <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                               <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -64,7 +64,7 @@
                     <div slot="media">
                         <vs-col vs-w="3">
                           <img :src="character.image" class="image-characters">
-                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
+                          <a @click="addFavorites(character)" href="#/home/0"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
                         </vs-col>
                         <a @click="openModal(character.id)" style="color:black;">
                             <div class="col-2" style="display: flex">
@@ -88,13 +88,13 @@
               </vs-row>
             </div>
           </vs-tab>
-        <!-- tan con personajes de genero desconocido-->
+        <!-- tab con personajes de genero desconocido-->
           <vs-tab label="Unknown" @click="changeTab('unknown')">
             <div>
               <br><br>
             <div class="col-2" style="display: flex">
                <span class="text-favorites">Mostrar Favoritos:</span>
-              <a  @click="showFavorites()"  href="#"><vs-icon icon="stars" class="icon-favorites" :color="colorIconFavorites"/></a>
+              <a  @click="showFavorites()"  href="#/home/0"><vs-icon icon="stars" class="icon-favorites" :color="colorIconFavorites"/></a>
             <br><br>
             </div>
               <vs-row vs-justify="center" v-if="this.showClearFilter == true">
@@ -112,7 +112,7 @@
                           <img :src="character.image" class="image-characters">
                           <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"   /></a>
                         </vs-col>
-                        <a @click="openModal(character.id)" style="color:black;">
+                        <a @click="openModal(character.id)" href="#/home/0" style="color:black;">
                             <div class="col-2" style="display: flex">
                               <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                               <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -139,9 +139,9 @@
                     <div slot="media">
                         <vs-col vs-w="3">
                           <img :src="character.image" class="image-characters">
-                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
+                          <a @click="addFavorites(character)" href="#/home/0"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
                         </vs-col>
-                        <a @click="openModal(character.id)" style="color:black;">
+                        <a @click="openModal(character.id)" href="#/home/0" style="color:black;">
                             <div class="col-2" style="display: flex">
                               <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                               <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -169,7 +169,7 @@
               <br><br>
             <div class="col-2" style="display: flex">
                <span class="text-favorites">Mostrar Favoritos:</span>
-              <a  @click="showFavorites()"  href="#"><vs-icon icon="stars" class="icon-favorites" :color="colorIconFavorites"/></a>
+              <a  @click="showFavorites()"  href="#/home/0"><vs-icon icon="stars" class="icon-favorites" :color="colorIconFavorites"/></a>
             <br><br>
             </div>
               <vs-row vs-justify="center" v-if="this.showClearFilter == true">
@@ -187,7 +187,7 @@
                           <img :src="character.image" class="image-characters">
                           <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"   /></a>
                         </vs-col>
-                        <a @click="openModal(character.id)" style="color:black;">
+                        <a @click="openModal(character.id)" href="#/home/0" style="color:black;">
                             <div class="col-2" style="display: flex">
                               <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                               <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -214,9 +214,9 @@
                     <div slot="media">
                         <vs-col vs-w="3">
                           <img :src="character.image" class="image-characters">
-                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
+                          <a @click="addFavorites(character)" href="#/home/0"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
                         </vs-col>
-                        <a @click="openModal(character.id)" style="color:black;">
+                        <a @click="openModal(character.id)" href="#/home/0" style="color:black;">
                             <div class="col-2" style="display: flex">
                               <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                               <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -244,7 +244,7 @@
               <br><br>
             <div class="col-2" style="display: flex">
                <span class="text-favorites">Mostrar Favoritos:</span>
-              <a  @click="showFavorites()"  href="#"><vs-icon icon="stars" class="icon-favorites" :color="colorIconFavorites"/></a>
+              <a  @click="showFavorites()"  href="#/home/0"><vs-icon icon="stars" class="icon-favorites" :color="colorIconFavorites"/></a>
             <br><br>
             </div>
               <vs-row vs-justify="center" v-if="this.showClearFilter == true">
@@ -262,7 +262,7 @@
                           <img :src="character.image" class="image-characters">
                           <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"   /></a>
                         </vs-col>
-                        <a @click="openModal(character.id)" style="color:black;">
+                        <a @click="openModal(character.id)" href="#/home/0" style="color:black;">
                         <div class="col-2" style="display: flex">
                           <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                           <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -289,9 +289,9 @@
                     <div slot="media">
                         <vs-col vs-w="3">
                           <img :src="character.image" class="image-characters">
-                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
+                          <a @click="addFavorites(character)" href="#/home/0"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
                         </vs-col>
-                        <a @click="openModal(character.id)" style="color:black;">
+                        <a @click="openModal(character.id)" href="#/home/0" style="color:black;">
                             <div class="col-2" style="display: flex">
                               <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                               <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -319,7 +319,7 @@
               <br><br>
             <div class="col-2" style="display: flex">
                <span class="text-favorites">Mostrar Favoritos:</span>
-              <a  @click="showFavorites()"  href="#"><vs-icon icon="stars" class="icon-favorites" :color="colorIconFavorites"/></a>
+              <a  @click="showFavorites()"  href="#/home/0"><vs-icon icon="stars" class="icon-favorites" :color="colorIconFavorites"/></a>
             <br><br>
             </div>
               <vs-row vs-justify="center" v-if="this.showClearFilter == true">
@@ -337,7 +337,7 @@
                           <img :src="character.image" class="image-characters">
                           <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"   /></a>
                         </vs-col>
-                        <a @click="openModal(character.id)" style="color:black;">
+                        <a @click="openModal(character.id)" href="#/home/0" style="color:black;">
                         <div class="col-2" style="display: flex">
                           <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                           <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -364,9 +364,9 @@
                     <div slot="media">
                         <vs-col vs-w="3">
                           <img :src="character.image" class="image-characters">
-                          <a @click="addFavorites(character)" href="#"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
+                          <a @click="addFavorites(character)" href="#/home/0"><vs-icon icon="stars" class="icon-favorites-img" :class="{active: character.active === true}"  /></a>
                         </vs-col>
-                        <a @click="openModal(character.id)" style="color:black;">
+                        <a @click="openModal(character.id)" href="#/home/0" style="color:black;">
                             <div class="col-2" style="display: flex">
                               <vs-icon icon="circle" class="icon-characters-cards" color="#34c759" v-if="character.status == 'Alive'"/>
                               <vs-icon icon="circle" class="icon-characters-cards" color="red" v-else/>
@@ -391,9 +391,9 @@
         </vs-tabs>
       </div>
 
-   <modal name="detail" width="1200" height="1500" style="overflow-y: auto;" @closed="closeModal()">
+   <modal name="detail" width="1200" height="auto" scrollable="true"  @closed="closeModal()">
      <div>
-     <div id="container" >
+     <div id="container">
             <div id="hero-img"></div>
             <div id="profile-img">
               <img id="img-profile" :src="fillCharacter.image" alt="" />
@@ -455,26 +455,11 @@
                 </vs-col>
               </vs-row>
                <br>
-                <vs-row  vs-w="12" v-if="this.isArray == false" class="row-modal">
-                <vs-col vs-w="3">
-                  <div class="square">
-                    <div class="content1">
-                      <span class="text-icon-modal">{{Episodes.name}}</span>
-                    </div>
-                    <div class="content1">
-                      <span class="text-modal-episode">{{Episodes.episode}}</span>
-                    </div>
-                    <div class="content1">
-                      <span class="text-modal-date">{{Episodes.air_date}}</span>
-                    </div>
-                  </div>
-                </vs-col>
-              </vs-row>
-               <vs-row  vs-w="12" v-else class="row-modal">
+               <vs-row  vs-w="12" class="row-modal" >
                 <vs-col vs-w="3" v-for="episode in Episodes" v-bind:key="episode.id" >
-                  <div class="square">
+                  <div class="square-episodes">
                     <div class="content1">
-                      <span class="text-icon-modal">{{episode.name}}</span>
+                      <span class="text-modal-name-episode">{{episode.name}}</span>
                     </div>
                     <div class="content1">
                       <span class="text-modal-episode">{{episode.episode}}</span>
@@ -499,7 +484,7 @@
                   <vs-card class="characters-cards-modal" >
                     <div slot="media">
                         <vs-col vs-w="3">
-                          <img :src="character.image">
+                          <img :src="character.image" class="image-characters">
                             <vs-icon icon="stars" class="icon-favorites-img" />
                         </vs-col>
                         <div class="col-2" style="display: flex">
@@ -528,9 +513,8 @@
           </div>
      </div>
    </modal>
-
+   <br><br><br><br>
 <div class="img-background-footer"></div>
-
  </div>
 
 </template>
@@ -1280,6 +1264,16 @@ margin: 20px 0 0 0;
   margin-bottom: 20px;
 }
 
+.square-episodes {
+  position: relative;
+  width: 60%;
+  border: 1px solid #b0b0b0;
+  border-radius: 7px;
+  height: 70px;
+  margin-left: 25px;
+  margin-bottom: 20px;
+}
+
 .square:after {
   content: '';
   display: block;
@@ -1298,7 +1292,15 @@ margin: 20px 0 0 0;
   font-size: 15px;
   color: #b0b0b0;
 }
-
+.text-modal-name-episode{
+  margin-left: 3px;
+  margin-top: 8px;
+  font-size: 15px;
+  color: #b0b0b0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 .text-modal{
   margin-top: 30px;
   margin-left: 10px;
