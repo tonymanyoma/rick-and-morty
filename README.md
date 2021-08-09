@@ -1,4 +1,8 @@
-# prueba
+# Aplicación vue js con uso del api rick y morty
+https://rickandmortyapi.com/
+
+## Node js version 
+>10.18
 
 ## Project setup
 ```

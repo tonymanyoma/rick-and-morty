@@ -1198,58 +1198,6 @@ margin: 20px 0 0 0;
 }
 
 /* modal */
-.modalDialog {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 99999;
-    opacity:0;
-    -webkit-transition: opacity 100ms ease-in;
-    -moz-transition: opacity 100ms ease-in;
-    transition: opacity 100ms ease-in;
-    pointer-events: none;
-    overflow-y: scroll;
-}
-.modalDialog:target {
-    opacity:1;
-    pointer-events: auto;
-}
-.modalDialog > div {
-    max-width: 1200px;
-    width: 100%;
-    position: relative;
-    margin: 10% auto;
-    border-radius: 3px;
-    background: #fff;
-}
-.close {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f26d7d;
-    color: #fff;
-    line-height: 25px;
-    position: absolute;
-    right: -12px;
-    text-align: center;
-    top: -10px;
-    width: 34px;
-    height: 34px;
-    text-decoration: none;
-    font-weight: bold;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    -moz-box-shadow: 1px 1px 3px #000;
-    -webkit-box-shadow: 1px 1px 3px #000;
-    box-shadow: 1px 1px 3px #000;
-    padding-top: 5px;
-}
-.close:hover {
-    background: #fa3f6f;
-}
-
 .row-modal{
   margin-left:30px;
 }
