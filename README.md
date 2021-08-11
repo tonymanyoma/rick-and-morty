@@ -6,6 +6,9 @@
 > Esta app muestra los personajes de rick y morty por su genero, además de la posibilidad de filtrarlos por nombre utilizando el api.
 > También permite a través de un modal ver el detalle el personaje(información relevante, además de los capítulos en donde aparece ), por último permite compartir la url de dicho personaje
 
+# Ejemplo
+https://tonymanyoma.github.io/rick-and-morty/#/
+
 # Node js version 
 > 10.18
 
