@@ -3,8 +3,8 @@
 > Aplicación construida en vue js utilizando el api de rick y morty 
 
 # Descripción de la app
-> Esta app permite listar los personajes de rick y morty por su genero, además de la posibilidad de filtrarlos por nombre utilizando el api
-> También permite a través de un modal ver alñ detalle el personaje junto con los capítulos en donde aparece y permite compartir la url de dicho personaje
+> Esta app permite listar los personajes de rick y morty por su genero, además de la posibilidad de filtrarlos por nombre utilizando el api.
+> También permite a través de un modal ver el detalle el personaje, junto con los capítulos en donde aparece y permite compartir la url de dicho personaje
 
 # Node js version 
 > 10.18
